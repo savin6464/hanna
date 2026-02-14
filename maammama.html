@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Happy Valentine’s Day Hanna ❤️</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+        height: 100vh;
+        background: linear-gradient(135deg, #ff8fb1, #ffc1d9);
+        color: white;
+        text-align: center;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* --- RESPONSIVE FLORAL CORNERS --- */
+    .corner {
+        position: fixed;
+        width: 120px; /* Smaller for mobile */
+        height: 120px;
+        z-index: 200;
+        pointer-events: none;
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.8;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M0 0c20 0 40 10 50 30 5-15 15-25 30-30H0zm0 40c10 0 20-5 20-15s-10-15-20-15v30zm60-35c-5 5-5 15 0 20s15 5 20 0-5-15-20-20zM10 60c5 10 20 10 25 0s-10-20-25-10z'/%3E%3C/svg%3E");
+    }
+
+    @media (min-width: 768px) {
+        .corner { width: 220px; height: 220px; }
+    }
+
+    .top-left { top: 0; left: 0; }
+    .top-right { top: 0; right: 0; transform: scaleX(-1); }
+
+    /* Main Container - Mobile Optimized */
+    .container {
+        position: relative;
+        z-index: 100;
+        padding: 25px 20px;
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        width: 85%;
+        max-width: 400px;
+    }
+
+    h1 { font-size: 1.5rem; margin-bottom: 5px; }
+    .subtext { font-size: 0.9rem; opacity: 0.9; margin-bottom: 15px; }
+
+    /* Sungit Button */
+    #sungitBtn {
+        padding: 12px 28px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 50px;
+        background: white;
+        color: #ff4e8a;
+        cursor: pointer;
+        font-weight: 700;
+        box-shadow: 0 5px 15px rgba(255, 78, 138, 0.3);
+    }
+
+    /* Video Reveal Section */
+    #revealContent {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    @keyframes popUp {
+        0% { transform: scale(0.8); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    #videoContainer {
+        margin: 15px 0;
+        width: 100%;
+        max-width: 240px; /* Perfectly sized for phone screens */
+        border-radius: 20px;
+        overflow: hidden;
+        border: 4px solid white;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    video { width: 100%; display: block; border-radius: 12px; }
+
+    /* Glowing Tulip Button */
+    .glow-circle {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background: white;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        animation: pulse 2s infinite;
+        margin-top: 15px;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+        50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+        100% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+    }
+
+    /* --- TULIP SYSTEM --- */
+    .flower-wrapper { position: fixed; bottom: 0; z-index: 1; display: flex; flex-direction: column; align-items: center; pointer-events: none; }
+    .flower-stem { width: 4px; background: linear-gradient(to right, #4e9a44, #2d5a27); height: 0; transition: height 3s ease-out; border-radius: 3px; }
+    .tulip-head { width: 35px; height: 45px; position: relative; transform: scale(0); transition: transform 1s ease-out; margin-bottom: -5px; }
+    .tulip-center { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 25px; height: 40px; background: #ff4d6d; border-radius: 50% 50% 45% 45%; z-index: 2; }
+    .tulip-left, .tulip-right { position: absolute; bottom: 0; width: 20px; height: 35px; background: #ff758f; border-radius: 50% 50% 45% 45%; }
+    .tulip-left { left: 0; transform: rotate(-15deg); }
+    .tulip-right { right: 0; transform: rotate(15deg); }
+    .leaf { position: absolute; width: 15px; height: 30px; background: #4e9a44; border-radius: 0 100% 0 100%; bottom: 15px; left: -12px; transform: rotate(-45deg); }
+
+    .heart { position: fixed; top: -20px; color: #ff4e8a; pointer-events: none; z-index: 2; animation: fall linear forwards; }
+    @keyframes fall { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(100vh); opacity: 0; } }
+</style>
+</head>
+<body>
+
+<div class="corner top-left"></div>
+<div class="corner top-right"></div>
+
+<div class="container">
+    <h1>Happy Valentine’s, Hanna 🌹</h1>
+    <p class="subtext">Yes ginawa ko ito 🙄. Sorry na :(</p>
+    
+    <button id="sungitBtn" onclick="reveal()">Click if Sungit 💖</button>
+
+    <div id="revealContent">
+        <h2 style="font-size: 1.2rem; margin-bottom: 5px;">Flower for you 💐</h2>
+        <div id="videoContainer">
+            <video id="valVideo" loop playsinline>
+                <source src="790bca11-5426-4f9e-bf10-deda77480884.mp4" type="video/mp4">
+            </video>
+        </div>
+        <p style="font-size: 0.9rem;">You are my favorite person ❤️</p>
+    </div>
+
+    <button class="glow-circle" onclick="growGarden()">🌷</button>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="baby-blue.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function reveal() {
+    document.getElementById("sungitBtn").style.display = "none";
+    document.getElementById("revealContent").style.display = "flex";
+    
+    const video = document.getElementById("valVideo");
+    const music = document.getElementById("bgMusic");
+    
+    video.play();
+    music.play().catch(() => console.log("Music play blocked by browser."));
+}
+
+function growGarden() {
+    const count = window.innerWidth < 768 ? 10 : 18; // Fewer tulips on mobile to prevent lag
+    for(let i = 0; i < count; i++) {
+        setTimeout(() => { createTulip(); }, i * 250);
+    }
+}
+
+function createTulip() {
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("flower-wrapper");
+    wrapper.style.left = Math.random() * 90 + "vw";
+
+    const head = document.createElement("div");
+    head.classList.add("tulip-head");
+    const center = document.createElement("div"); center.classList.add("tulip-center");
+    const left = document.createElement("div"); left.classList.add("tulip-left");
+    const right = document.createElement("div"); right.classList.add("tulip-right");
+    head.appendChild(left); head.appendChild(right); head.appendChild(center);
+
+    const stem = document.createElement("div");
+    stem.classList.add("flower-stem");
+    const leaf = document.createElement("div");
+    leaf.classList.add("leaf");
+    stem.appendChild(leaf);
+
+    wrapper.appendChild(head);
+    wrapper.appendChild(stem);
+    document.body.appendChild(wrapper);
+
+    const targetHeight = Math.random() * 100 + 60;
+    setTimeout(() => { stem.style.height = targetHeight + "px"; }, 100);
+    setTimeout(() => { head.style.transform = "scale(1)"; }, 1800);
+}
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 8 + 12 + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}
+setInterval(createHeart, 800);
+</script>
+
+</body>
+</html>
